@@ -1,0 +1,3 @@
+Corso: https://www.youtube.com/watch?v=n093-I6K_oQ&list=PLP5MAKLy8lP8FAytdm2ncZbPioA9A2SgF
+
+i dict sono l'equivalente python dei json, python non usa json ma usa bson

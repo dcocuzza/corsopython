@@ -1,0 +1,21 @@
+Per creare un ambiente virtuale lanciare su una cartella il comando: $python -m venv venv
+il secondo venv è il nome della cartella possiamo mettere anche un altro nome
+Per attivare l'ambiente andiamo dentro la cartella e lanciamo il comando: $.\Scripts\Activate.ps1
+Per disattivare l'ambiente andiamo dentro la cartella e lanciamo il comando: $deactivate
+
+Se l'esecuzione dello script da errore bypassare così: $Set-ExecutionPolicy Unrestricted -Scope Process
+e poi lanciare il comando di script.
+
+Adesso possiamo installare i nuovi package, digitare: $pip install django
+Dentro l'ambiente virtuale attivato lanciare il comando: $python e poi $import django e $django.VERSION
+
+
+Cliccando ctrl + shift + p possiamo selezionare l'interprete dell'ambiente virtuale su vs code
+
+Salviamo le versioni dei package che abbiamo installato
+$pip freeze > requirements.txt 
+Reinstalliamo in un altro ambiente virtuale
+$pip install -r .\requirements.txt
+
+$pip list = vede la lista delle librerie installate
+$pip install nome_libreria = installa la libreria
