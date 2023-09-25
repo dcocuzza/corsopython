@@ -1,0 +1,88 @@
+CORSO
+
+Playlist: https://www.youtube.com/watch?v=pxBiMO8fWHw&list=PLP5MAKLy8lP_QKLouwhi-cKC_nDhYoPfR
+
+Le tabelle vengono sostituite con le collection che sono le collezioni di dati. Il database è un insieme di collezioni di documenti mentre il database SQL è un insieme di tabelle formate da righe e colonne.
+
+INSTALLAZIONE
+Installare la versione Windows: https://www.mongodb.com/docs/manual/installation/ seguire l'installer
+Aprire server su C/Programmi/MongoDB/Server/7.0/bin/mongod.exe
+Se non parte andare su C e creare la tabella "data" e dentro la cartella data creare la tabella "db".
+Scaricare la shell su: https://www.mongodb.com/try/download/shell versione 2.0.0 e metterla su C.
+
+show databses | show dbs = mostra i database
+use corsomongo = dice di usare quel database
+show collections = mostra tutte le collection
+
+db.utenti = crea una collezione utenti
+
+db.utenti.insert({"nome":"Luca", "cognome":"Rossi", "eta":25, "citta":"Milano"}) = inserire l'utente dentro la collection utenti
+
+
+db.utenti.insert([{"nome":"Marco", "cognome":"Verdi", "eta":35, "citta":"Milano"},{"nome":"Anna", "cognome":true, "eta":21, "citta":""}]) = inserisce più utenti nella collection utenti
+
+db.utenti.find() = visualizza tutti
+
+db.utenti.find().pretty() = visualizza tutti in modo più ordinato
+
+db.utenti.findOne({citta: "Milano"}) = ritorna il primo la cui città è Milano
+
+db.utenti.find({citta: "Milano"}) = ritorna tutti gli utenti la cui città è Milano
+
+COMPARATORI
+
+$eq = uguale
+$gt = maggiore
+$gte = maggiore uguale
+$in = che si trova in un range di valori
+$lt = minore
+$lte = minore uguale
+$ne = non uguale(diverso)
+$nin = che non sono compresi nel range
+
+db.utenti.find({eta: {$gt: 21}}) = trova gli utenti con età superiore a 21
+
+db.utenti.find({eta: {$gt: 21}}) = trova gli utenti con età superiore o uguale a 21
+
+db.utenti.find({eta: 21}) = trova utenti con età 21 ($eq potrebbe non servire)
+
+db.utenti.find({eta: {$in: [21,25]}}) = trova utenti con età compresa tra 21 e 25 (estremi inclusi)
+
+OPERATORI LOGICI
+
+$and
+$or
+$not
+$nor
+
+db.utenti.find({$and: [{eta: {$gt: 22}}, {citta: "Milano"}]}) = utenti che vivono a Milano ed hanno un'età superiore a 22 anni
+
+UPDATE
+
+db.utenti.updateOne({nome: "Luca"}, {$set: {eta: 29, cognome: "Rosso"}}) = aggiorna l'età e il cognome del primo utente che ha il nome "Luca"
+
+
+db.utenti.updateOne({_id: ObjectId("650ac36eea86df69e3da7517")}, {$set: {eta: 34}}) = aggiornamento età usando l'ObjectId
+
+db.utenti.updateMany({citta: "Milano"}, {$set: {cap: "45800"}}) = nei record in cui la città è Milano aggiunge il record "cap" e lo setta a "45800"
+
+db.utenti.updateMany({}, {$inc: {eta: 1}}) = aumenta l'eta di 1 a tutti
+
+db.utenti.updateMany({nome: "Massimo"}, {$set: {cognome: "Blu", eta: 23, citta: "Roma"}}, {upsert: true}) = il filtro ne ha trovati 0 e ne ha modificate 0, essendo upsert: true vuol dire che se non esiste lo crea
+
+DELETE
+
+db.utenti.deleteOne({nome: "Massimo"}) = elimina il primo record con il nome "Massimo"
+
+db.utenti.deleteOne({$and: [{eta: {$gt: 20}}, {citta: "Roma"}]}) = Cancella il primo utente con età maggiore di 20 anni che abita a Roma
+
+db.utenti.deleteMany({citta: "Milano"}) = elimina tutti gli utenti di Milano
+
+db.utenti.deleteMany({}) = elimina tutti
+
+
+
+
+
+
+
